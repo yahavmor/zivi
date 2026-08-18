@@ -222,43 +222,6 @@
   /* Fashion section */
   #fashion{background:linear-gradient(135deg, #fff0f4, #fff);}
 
-  /* Business section */
-  #business{
-    background:var(--white);
-    border-radius:40px;
-    box-shadow:0 10px 40px rgba(217,201,242,.35);
-  }
-  .degree-box{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:28px;
-    flex-wrap:wrap;
-    background:linear-gradient(135deg, var(--lavender), #efe6fb);
-    border-radius:26px;
-    padding:40px;
-    text-align:center;
-  }
-  .degree-box .cap{font-size:70px;}
-  .degree-box h3{font-size:1.6rem; margin-bottom:6px;}
-  .degree-box p{opacity:.75;}
-  .badge-row{
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin-top:28px;
-  }
-  .badge{
-    background:var(--white);
-    border:2px solid var(--lavender);
-    padding:8px 18px;
-    border-radius:999px;
-    font-size:.9rem;
-    font-weight:600;
-    color:#8a6fc9;
-  }
-
   /* Makeup section */
   #makeup{background:linear-gradient(135deg, #fff, #fff4e8);}
   .palette{
@@ -358,6 +321,59 @@
     margin-top:10px;
   }
 
+  /* Letter section */
+  #letter{
+    background:linear-gradient(160deg, #2b2035, #4a3363 55%, #6b4a86);
+    border-radius:40px;
+    color:#fff2f8;
+    position:relative;
+    overflow:hidden;
+  }
+  #letter::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 20% 20%, rgba(255,182,200,.18), transparent 45%),
+               radial-gradient(circle at 85% 80%, rgba(255,212,121,.16), transparent 50%);
+    pointer-events:none;
+  }
+  #letter .section-head h2,
+  #letter .section-head p{color:#fff2f8;}
+  #letter .section-head p{opacity:.75;}
+  .letter-card{
+    position:relative;
+    max-width:640px;
+    margin:0 auto;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(6px);
+    border-radius:28px;
+    padding:48px 40px;
+    box-shadow:0 24px 60px rgba(0,0,0,.35);
+  }
+  .letter-card .quote-mark{
+    font-size:60px;
+    color:var(--pink);
+    line-height:1;
+    display:block;
+    margin-bottom:6px;
+    font-family:Georgia, serif;
+  }
+  .letter-card p{
+    font-size:1.08rem;
+    line-height:2;
+    margin-bottom:18px;
+    opacity:.95;
+  }
+  .letter-card .signature{
+    margin-top:28px;
+    text-align:left;
+    font-family:'Fredoka','Heebo',sans-serif;
+    font-size:1.3rem;
+    color:var(--pink);
+    font-weight:600;
+  }
+
   footer{
     text-align:center;
     padding:20px 20px 80px;
@@ -412,16 +428,16 @@
 
 <nav>
   <a href="#fashion">👗 אופנה</a>
-  <a href="#business">🎓 עסקים</a>
   <a href="#makeup">💄 איפור</a>
   <a href="#food">🍣 אוכל</a>
-  <a href="#dogs">🐶 כלבים</a>
+  <a href="#missy">🐾 מיסי</a>
+  <a href="#letter">💌 ברכה</a>
 </nav>
 
 <header>
   <div class="hero-badge">✨ ברוכים הבאים לעולם הקטן והמושלם שלה ✨</div>
   <h1>זיוי</h1>
-  <p class="tagline">סטייל, סטייל ועוד קצת סטייל — אופנה, איפור, ניהול עסקים ואהבת כלבים בלתי נגמרת 🐾</p>
+  <p class="tagline">סטייל, סטייל ועוד קצת סטייל — אופנה, איפור, אוכל טוב ואהבת כלבה בלתי נגמרת 🐾</p>
   <div class="scroll-hint">גללו למטה ⬇</div>
 </header>
 
@@ -456,27 +472,6 @@
         <video src="./zivi-walk.mp4" poster="./zivi-walk-poster.jpg" autoplay muted loop playsinline></video>
       </div>
       <p class="sub">מסתובבת, צוחקת, ועדיין הכי מסוגננת ברחוב 🚶‍♀️💨</p>
-    </div>
-  </section>
-
-  <section class="section" id="business">
-    <div class="section-head">
-      <span class="emoji-title">🎓</span>
-      <h2>תואר במנהל עסקים</h2>
-      <p>יופי וסטייל, אבל גם ראש חד למספרים ולניהול</p>
-    </div>
-    <div class="degree-box">
-      <span class="cap">🎓</span>
-      <div>
-        <h3>תואר ראשון במנהל עסקים</h3>
-        <p>שילוב של יצירתיות, סדר וניהול — כי אפשר גם וגם.</p>
-      </div>
-    </div>
-    <div class="badge-row">
-      <span class="badge">📊 ניהול</span>
-      <span class="badge">💼 שיווק</span>
-      <span class="badge">🧠 חשיבה אסטרטגית</span>
-      <span class="badge">🚀 יזמות</span>
     </div>
   </section>
 
@@ -515,8 +510,8 @@
   <section class="section" id="food">
     <div class="section-head">
       <span class="emoji-title">🍣</span>
-      <h2>אוכל אסייתי</h2>
-      <p>סושי, טופו ודגים — התזונה הרשמית והבלעדית של זיוי</p>
+      <h2>האוכל שהיא הכי אוהבת</h2>
+      <p>סושי, טופו ודגים, ועוד כל מה שקשור לנשנושים טובים — התזונה הרשמית של זיוי</p>
     </div>
 
     <div class="flying-food">
@@ -524,61 +519,88 @@
       <span style="animation-duration:7.5s; animation-delay:1.2s;">🐟</span>
       <span style="animation-duration:5.5s; animation-delay:2.4s;">🥢</span>
       <span style="animation-duration:8s; animation-delay:0.6s;">🍱</span>
-      <span style="animation-duration:6.8s; animation-delay:3s;">🧊</span>
+      <span style="animation-duration:6.8s; animation-delay:3s;">🌽</span>
       <span style="animation-duration:7s; animation-delay:1.8s;">🍤</span>
+      <span style="animation-duration:6.3s; animation-delay:2.8s;">🍓</span>
+      <span style="animation-duration:7.8s; animation-delay:0.9s;">🍟</span>
+      <span style="animation-duration:5.9s; animation-delay:3.6s;">🥗</span>
+      <span style="animation-duration:6.6s; animation-delay:4.2s;">🍿</span>
     </div>
 
     <div class="belt">
       <div class="belt-track">
-        <span>🍣</span><span>🐟</span><span>🍱</span><span>🥢</span><span>🍤</span><span>🍙</span><span>🧊</span>
-        <span>🍣</span><span>🐟</span><span>🍱</span><span>🥢</span><span>🍤</span><span>🍙</span><span>🧊</span>
+        <span>🍣</span><span>🐟</span><span>🍱</span><span>🥢</span><span>🌽</span><span>🍤</span><span>🍙</span><span>🍓</span><span>🍟</span><span>🥗</span><span>🍿</span>
+        <span>🍣</span><span>🐟</span><span>🍱</span><span>🥢</span><span>🌽</span><span>🍤</span><span>🍙</span><span>🍓</span><span>🍟</span><span>🥗</span><span>🍿</span>
       </div>
     </div>
 
     <p class="quote">"עוד צלחת סושי אחת... ועוד אחת... ועוד אחת" — זיוי, כל פעם 🥢😂</p>
+    <p class="quote" style="margin-top:8px; font-weight:400; opacity:.7; font-size:.95rem;">גם חובבת גדולה של מרק תירס 🌽, שוקולד תות 🍓, תפוצ'יפס 🍟, סלט יווני 🥗 ונשנושי אסאדו 🍿</p>
   </section>
 
-  <section class="section" id="dogs">
+  <section class="section" id="missy">
     <div class="dog-hero">
       <span class="icon">🐶</span>
-      <h2>כלבים</h2>
-      <p>כי אין אהבה כמו אהבת כלב 🐾</p>
+      <h2>מיסי</h2>
+      <p>כי אין אהבה כמו אהבת הכלבה שלנו 🐾</p>
       <div class="paw-trail">🐾 🐾 🐾 🐾 🐾</div>
     </div>
     <div class="photo-grid">
       <div class="photo-card">
-        <img src="./dog-lap.jpg" alt="הכלב על הברכיים">
+        <img src="./dog-lap.jpg" alt="מיסי על הברכיים">
         <div class="cap">חיבוקים על הספה 🥹</div>
       </div>
       <div class="photo-card">
-        <img src="./dog-couch.jpg" alt="הכלב על הספה">
-        <div class="cap">מלך הבית 👑</div>
+        <img src="./dog-couch.jpg" alt="מיסי על הספה">
+        <div class="cap">מלכת הבית 👑</div>
       </div>
       <div class="photo-card">
-        <img src="./dog-walk.jpg" alt="הכלב מטייל בבית">
+        <img src="./dog-walk.jpg" alt="מיסי מטיילת בבית">
         <div class="cap">תמיד בתנועה 🐾</div>
       </div>
       <div class="photo-card">
-        <img src="./dog-floor.jpg" alt="הכלב נח על הרצפה">
-        <div class="cap">מנוחה מגיעה לכולם 😴</div>
+        <img src="./dog-floor.jpg" alt="מיסי נחה על הרצפה">
+        <div class="cap">מנוחה מגיעה לכולן 😴</div>
       </div>
     </div>
     <div class="card-grid">
       <div class="card">
         <span class="icon">🦴</span>
-        <h3>חברים הכי טובים</h3>
+        <h3>החברה הכי טובה</h3>
         <p>ליווי נאמן בכל הליכה, בכל בוקר ובכל רגע.</p>
       </div>
       <div class="card">
         <span class="icon">🐕</span>
         <h3>טיולים וכיף</h3>
-        <p>הפארק, הים והרחוב — כל מקום הופך לחוויה עם כלב לצד.</p>
+        <p>הפארק, הים והרחוב — כל מקום הופך לחוויה עם מיסי לצד.</p>
       </div>
       <div class="card">
         <span class="icon">❤️</span>
         <h3>אהבה בלי סוף</h3>
-        <p>כי כלבים הם המשפחה הכי חמודה שיש.</p>
+        <p>כי מיסי היא המשפחה הכי חמודה שיש.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="letter">
+    <div class="section-head">
+      <span class="emoji-title">💌</span>
+      <h2>ברכה ליום ההולדת</h2>
+      <p>כמה מילים שכתבתי לך, זיוי שלי</p>
+    </div>
+    <div class="letter-card">
+      <span class="quote-mark">"</span>
+      <p>לזיוי שלי שתמיד צעירה ❤️</p>
+      <p>טוב זיוי, נראה לי שאפשר להפסיק להעמיד פנים שאנחנו ילדים. את כבר בת 25.</p>
+      <p>מה אני כבר יכול להגיד שעוד לא נאמר... אני רוצה לאחל לך מלא מלא מזל טוב.</p>
+      <p>אני כל כך גאה בך ובכל מה שהספקת להשיג. אני בטוח שתצליחי בכל מה שרק תבחרי, כי כבר הוכחת לעצמך ולכל מי שסביבך שאין דבר שאת לא יכולה לעשות כשאת מחליטה עליו.</p>
+      <p>סיימת את התואר כמו אלופה, מצאת משרה מטורפת במקום שווה, קידמת את העסק של "מיסי". הפכת למאפרת וסטייליסטית מקצועית, ועכשיו אנחנו גם עוברים יחד לדירה חדשה ומתחילים פרק חדש.</p>
+      <p>בינינו, אף אחד מכל אלה לא באמת הפתיע אותי. כי כל מה שאת מתחילה את מסיימת על הצד הטוב ביותר, וכל דבר שאת חושבת הופך בסוף למציאות.</p>
+      <p>מעבר לזה, אני הכי מתגאה בך שיש. על הלב שלך, על הנתינה שלך, על כמה שאת חזקה גם כשקשה, ועל זה שאת תמיד ממשיכה קדימה.</p>
+      <p>הדבר הכי חשוב שאני רוצה שתדעי הוא שתמיד יהיה לך אותי. ברגעים הטובים, ברגעים הפחות טובים, ובכל מה שביניהם.</p>
+      <p>אני מאחל לך ובטוח שהשנה הקרובה תהיה אפילו טובה יותר מזו שהייתה. שתמשיכי לעשות רק מה שאת אוהבת, להגיע ליעדים שלך ולעשות את כל הדברים שהופכים אותך למי שאת.</p>
+      <p>ותזכרי שגם אחרי כל ההצלחות, התארים, העבודות וההישגים, הדבר שאני הכי אוהב בך הוא פשוט אותך.</p>
+      <p class="signature">מזל טוב זיוי שלי, אוהב אותך ❤️</p>
     </div>
   </section>
 
