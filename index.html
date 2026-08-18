@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>זיוי 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#ffb6c8;
+    --pink-deep:#ff8fab;
+    --lavender:#d9c9f2;
+    --cream:#fff6f0;
+    --mint:#bff0e0;
+    --gold:#ffd479;
+    --text:#5b4b52;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Heebo', sans-serif;
+    background:linear-gradient(180deg, var(--cream), #fff 20%);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fredoka', 'Heebo', sans-serif;}
+
+  /* floating decorations */
+  .floaties{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;}
+  .floaty{position:absolute; font-size:28px; opacity:.5; animation:float 12s ease-in-out infinite;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-40px) rotate(15deg);}
+  }
+
+  header{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:40px 20px;
+    background:radial-gradient(circle at 50% 20%, var(--pink) 0%, transparent 60%),
+               radial-gradient(circle at 80% 70%, var(--lavender) 0%, transparent 55%),
+               radial-gradient(circle at 15% 75%, var(--mint) 0%, transparent 55%);
+  }
+  .hero-badge{
+    background:var(--white);
+    padding:8px 22px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--pink-deep);
+    box-shadow:0 6px 18px rgba(255,143,171,.25);
+    margin-bottom:24px;
+    letter-spacing:1px;
+  }
+  header h1{
+    font-size:clamp(4rem, 14vw, 9rem);
+    color:var(--pink-deep);
+    text-shadow:4px 4px 0 var(--white), 8px 8px 0 rgba(255,143,171,.25);
+    line-height:1;
+    margin-bottom:18px;
+  }
+  header p.tagline{
+    font-size:clamp(1.1rem, 2.5vw, 1.6rem);
+    max-width:560px;
+    color:var(--text);
+    font-weight:400;
+    opacity:.85;
+  }
+  .scroll-hint{
+    margin-top:48px;
+    font-size:14px;
+    opacity:.6;
+    animation:bounce 2s infinite;
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(10px);}
+  }
+
+  main{position:relative; z-index:1;}
+
+  .section{
+    padding:90px 20px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom:56px;
+  }
+  .section-head .emoji-title{
+    font-size:56px;
+    margin-bottom:8px;
+    display:block;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 5vw, 3rem);
+    color:var(--text);
+  }
+  .section-head p{
+    margin-top:10px;
+    opacity:.65;
+    font-size:1.05rem;
+  }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:24px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:26px;
+    padding:32px 24px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(91,75,82,.08);
+    transition:transform .35s ease, box-shadow .35s ease;
+    border:2px solid transparent;
+  }
+  .card:hover{
+    transform:translateY(-10px) rotate(-1deg);
+    box-shadow:0 18px 40px rgba(255,143,171,.25);
+    border-color:var(--pink);
+  }
+  .card .icon{
+    font-size:46px;
+    display:block;
+    margin-bottom:14px;
+  }
+  .card h3{
+    font-size:1.25rem;
+    margin-bottom:8px;
+  }
+  .card p{
+    font-size:.95rem;
+    opacity:.7;
+    line-height:1.6;
+  }
+
+  /* Fashion section */
+  #fashion{background:linear-gradient(135deg, #fff0f4, #fff);}
+
+  /* Business section */
+  #business{
+    background:var(--white);
+    border-radius:40px;
+    box-shadow:0 10px 40px rgba(217,201,242,.35);
+  }
+  .degree-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+    background:linear-gradient(135deg, var(--lavender), #efe6fb);
+    border-radius:26px;
+    padding:40px;
+    text-align:center;
+  }
+  .degree-box .cap{font-size:70px;}
+  .degree-box h3{font-size:1.6rem; margin-bottom:6px;}
+  .degree-box p{opacity:.75;}
+  .badge-row{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  .badge{
+    background:var(--white);
+    border:2px solid var(--lavender);
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:.9rem;
+    font-weight:600;
+    color:#8a6fc9;
+  }
+
+  /* Makeup section */
+  #makeup{background:linear-gradient(135deg, #fff, #fff4e8);}
+  .palette{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  .swatch{
+    width:52px; height:52px;
+    border-radius:50%;
+    box-shadow:0 6px 14px rgba(0,0,0,.1);
+    border:3px solid white;
+  }
+
+  /* Dogs section */
+  #dogs{
+    background:linear-gradient(135deg, var(--mint), #eafff7);
+    border-radius:40px;
+  }
+  .dog-hero{
+    text-align:center;
+    margin-bottom:40px;
+  }
+  .dog-hero .icon{font-size:90px;}
+  .paw-trail{
+    display:flex;
+    justify-content:center;
+    gap:26px;
+    font-size:24px;
+    opacity:.6;
+    margin-top:18px;
+  }
+
+  footer{
+    text-align:center;
+    padding:60px 20px 80px;
+    opacity:.6;
+    font-size:.95rem;
+  }
+  footer .heart{color:var(--pink-deep);}
+
+  nav{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(8px);
+    border-radius:999px;
+    padding:10px 8px;
+    display:flex;
+    gap:4px;
+    box-shadow:0 8px 24px rgba(91,75,82,.12);
+    z-index:10;
+  }
+  nav a{
+    text-decoration:none;
+    color:var(--text);
+    font-size:.85rem;
+    font-weight:600;
+    padding:8px 16px;
+    border-radius:999px;
+    transition:background .2s, color .2s;
+    white-space:nowrap;
+  }
+  nav a:hover{background:var(--pink); color:white;}
+
+  @media (max-width:600px){
+    nav{top:auto; bottom:16px;}
+    nav a{padding:8px 10px; font-size:.75rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="floaties" id="floaties"></div>
+
+<nav>
+  <a href="#fashion">👗 אופנה</a>
+  <a href="#business">🎓 עסקים</a>
+  <a href="#makeup">💄 איפור</a>
+  <a href="#dogs">🐶 כלבים</a>
+</nav>
+
+<header>
+  <div class="hero-badge">✨ ברוכים הבאים לעולם הקטן והמושלם שלה ✨</div>
+  <h1>זיוי</h1>
+  <p class="tagline">סטייל, סטייל ועוד קצת סטייל — אופנה, איפור, ניהול עסקים ואהבת כלבים בלתי נגמרת 🐾</p>
+  <div class="scroll-hint">גללו למטה ⬇</div>
+</header>
+
+<main>
+
+  <section class="section" id="fashion">
+    <div class="section-head">
+      <span class="emoji-title">👗</span>
+      <h2>אופנה ובגדים</h2>
+      <p>כי לוק טוב זה לא מותרות, זו שפת אם</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">👚</span>
+        <h3>סטייל יומיומי</h3>
+        <p>שילובים קלילים ואלגנטיים לכל יום, תמיד עם טאץ' אישי.</p>
+      </div>
+      <div class="card">
+        <span class="icon">👜</span>
+        <h3>אקססוריז</h3>
+        <p>התיק, הנעליים והתכשיטים הנכונים — הפרטים הקטנים שעושים את ההבדל.</p>
+      </div>
+      <div class="card">
+        <span class="icon">✨</span>
+        <h3>לוקים לאירועים</h3>
+        <p>מהמשרד ועד לערב מפנק, תמיד מסונכרנת עם הטרנד הכי חדש.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="business">
+    <div class="section-head">
+      <span class="emoji-title">🎓</span>
+      <h2>תואר במנהל עסקים</h2>
+      <p>יופי וסטייל, אבל גם ראש חד למספרים ולניהול</p>
+    </div>
+    <div class="degree-box">
+      <span class="cap">🎓</span>
+      <div>
+        <h3>תואר ראשון במנהל עסקים</h3>
+        <p>שילוב של יצירתיות, סדר וניהול — כי אפשר גם וגם.</p>
+      </div>
+    </div>
+    <div class="badge-row">
+      <span class="badge">📊 ניהול</span>
+      <span class="badge">💼 שיווק</span>
+      <span class="badge">🧠 חשיבה אסטרטגית</span>
+      <span class="badge">🚀 יזמות</span>
+    </div>
+  </section>
+
+  <section class="section" id="makeup">
+    <div class="section-head">
+      <span class="emoji-title">💄</span>
+      <h2>איפור</h2>
+      <p>מגע קסם שהופך כל יום למיוחד</p>
+    </div>
+    <div class="palette">
+      <div class="swatch" style="background:#ffb6c8"></div>
+      <div class="swatch" style="background:#ff8fab"></div>
+      <div class="swatch" style="background:#ffd479"></div>
+      <div class="swatch" style="background:#d9c9f2"></div>
+      <div class="swatch" style="background:#c17a5b"></div>
+      <div class="swatch" style="background:#8a5a44"></div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">💋</span>
+        <h3>לוק גלאם</h3>
+        <p>איפור עשיר וזוהר, מושלם לערבים מיוחדים.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🌸</span>
+        <h3>לוק טבעי</h3>
+        <p>עדין ומקרין, בשביל היום-יום.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🎨</span>
+        <h3>ניסויים וצבע</h3>
+        <p>אף פעם לא מפחדת להתנסות בטרנדים חדשים.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dogs">
+    <div class="dog-hero">
+      <span class="icon">🐶</span>
+      <h2>כלבים</h2>
+      <p>כי אין אהבה כמו אהבת כלב 🐾</p>
+      <div class="paw-trail">🐾 🐾 🐾 🐾 🐾</div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">🦴</span>
+        <h3>חברים הכי טובים</h3>
+        <p>ליווי נאמן בכל הליכה, בכל בוקר ובכל רגע.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🐕</span>
+        <h3>טיולים וכיף</h3>
+        <p>הפארק, הים והרחוב — כל מקום הופך לחוויה עם כלב לצד.</p>
+      </div>
+      <div class="card">
+        <span class="icon">❤️</span>
+        <h3>אהבה בלי סוף</h3>
+        <p>כי כלבים הם המשפחה הכי חמודה שיש.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  נבנה באהבה <span class="heart">💗</span> בשביל זיוי
+</footer>
+
+<script>
+  const emojis = ["💗","✨","🐾","💄","👗","🎀","🌸"];
+  const container = document.getElementById('floaties');
+  for(let i=0;i<16;i++){
+    const el = document.createElement('div');
+    el.className = 'floaty';
+    el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left = Math.random()*100 + 'vw';
+    el.style.top = Math.random()*100 + 'vh';
+    el.style.animationDelay = (Math.random()*8) + 's';
+    el.style.animationDuration = (10 + Math.random()*8) + 's';
+    el.style.fontSize = (18 + Math.random()*22) + 'px';
+    container.appendChild(el);
+  }
+</script>
+
+</body>
+</html>
