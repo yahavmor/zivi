@@ -145,6 +145,80 @@
     line-height:1.6;
   }
 
+  /* Photo gallery */
+  .photo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:44px;
+  }
+  .photo-card{
+    position:relative;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 14px 34px rgba(91,75,82,.18);
+    aspect-ratio:4/5;
+    transform:rotate(0deg);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .photo-grid .photo-card:nth-child(odd){transform:rotate(-2deg);}
+  .photo-grid .photo-card:nth-child(even){transform:rotate(2deg);}
+  .photo-card:hover{transform:rotate(0deg) scale(1.03) translateY(-6px); box-shadow:0 20px 46px rgba(255,143,171,.3);}
+  .photo-card img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .photo-card .cap{
+    position:absolute;
+    bottom:0; left:0; right:0;
+    padding:14px 16px 12px;
+    background:linear-gradient(0deg, rgba(0,0,0,.55), transparent);
+    color:#fff;
+    font-size:.85rem;
+    font-weight:600;
+  }
+
+  /* Funny video block */
+  .video-block{
+    background:linear-gradient(135deg, var(--gold), #ffe6b0);
+    border-radius:28px;
+    padding:36px;
+    text-align:center;
+    margin-bottom:10px;
+  }
+  .video-block .funny-tag{
+    display:inline-block;
+    background:var(--white);
+    color:#c98a1c;
+    font-weight:700;
+    font-size:.85rem;
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+  .video-block h3{
+    font-size:1.4rem;
+    margin-bottom:18px;
+  }
+  .video-wrap{
+    max-width:320px;
+    margin:0 auto;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 16px 40px rgba(0,0,0,.18);
+    border:6px solid var(--white);
+  }
+  .video-wrap video{
+    display:block;
+    width:100%;
+  }
+  .video-block .sub{
+    margin-top:16px;
+    font-size:.9rem;
+    opacity:.7;
+  }
+
   /* Fashion section */
   #fashion{background:linear-gradient(135deg, #fff0f4, #fff);}
 
@@ -220,13 +294,85 @@
     margin-top:18px;
   }
 
+  /* Food section */
+  #food{
+    background:linear-gradient(135deg, #fff4e0, #ffe9f0);
+    border-radius:40px;
+    overflow:hidden;
+  }
+  #food .section-head{margin-bottom:36px;}
+  .belt{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    padding:26px 0;
+    background:repeating-linear-gradient(45deg, #2b2b2b, #2b2b2b 12px, #383838 12px, #383838 24px);
+    border-radius:20px;
+    box-shadow:inset 0 0 20px rgba(0,0,0,.4), 0 14px 30px rgba(0,0,0,.15);
+    margin-bottom:20px;
+  }
+  .belt-track{
+    display:flex;
+    width:max-content;
+    gap:36px;
+    animation:scrollBelt 14s linear infinite;
+  }
+  .belt-track span{
+    font-size:52px;
+    background:var(--white);
+    border-radius:50%;
+    width:84px; height:84px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 14px rgba(0,0,0,.25);
+    flex-shrink:0;
+  }
+  @keyframes scrollBelt{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .flying-food{
+    position:relative;
+    height:90px;
+    margin-bottom:10px;
+  }
+  .flying-food span{
+    position:absolute;
+    font-size:34px;
+    top:50%;
+    animation:flyAcross linear infinite;
+  }
+  @keyframes flyAcross{
+    0%{transform:translate(-10vw, 20px) rotate(0deg); opacity:0;}
+    10%{opacity:1;}
+    50%{transform:translate(50vw, -30px) rotate(180deg);}
+    90%{opacity:1;}
+    100%{transform:translate(110vw, 20px) rotate(360deg); opacity:0;}
+  }
+  #food .quote{
+    text-align:center;
+    font-size:1.15rem;
+    font-weight:600;
+    opacity:.8;
+    margin-top:10px;
+  }
+
   footer{
     text-align:center;
-    padding:60px 20px 80px;
-    opacity:.6;
+    padding:20px 20px 80px;
+    opacity:.85;
     font-size:.95rem;
   }
   footer .heart{color:var(--pink-deep);}
+  .footer-photo{
+    width:120px; height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid var(--white);
+    box-shadow:0 10px 26px rgba(255,143,171,.3);
+    margin-bottom:18px;
+  }
 
   nav{
     position:fixed;
@@ -268,6 +414,7 @@
   <a href="#fashion">👗 אופנה</a>
   <a href="#business">🎓 עסקים</a>
   <a href="#makeup">💄 איפור</a>
+  <a href="#food">🍣 אוכל</a>
   <a href="#dogs">🐶 כלבים</a>
 </nav>
 
@@ -286,22 +433,29 @@
       <h2>אופנה ובגדים</h2>
       <p>כי לוק טוב זה לא מותרות, זו שפת אם</p>
     </div>
-    <div class="card-grid">
-      <div class="card">
-        <span class="icon">👚</span>
-        <h3>סטייל יומיומי</h3>
-        <p>שילובים קלילים ואלגנטיים לכל יום, תמיד עם טאץ' אישי.</p>
+
+    <div class="photo-grid">
+      <div class="photo-card">
+        <img src="./dress.jpg" alt="לוק שמלה ארוכה">
+        <div class="cap">לוק ערב ✨</div>
       </div>
-      <div class="card">
-        <span class="icon">👜</span>
-        <h3>אקססוריז</h3>
-        <p>התיק, הנעליים והתכשיטים הנכונים — הפרטים הקטנים שעושים את ההבדל.</p>
+      <div class="photo-card">
+        <img src="./bikini.jpg" alt="לוק ים ובריכה">
+        <div class="cap">מוד חופשה 🏖️</div>
       </div>
-      <div class="card">
-        <span class="icon">✨</span>
-        <h3>לוקים לאירועים</h3>
-        <p>מהמשרד ועד לערב מפנק, תמיד מסונכרנת עם הטרנד הכי חדש.</p>
+      <div class="photo-card">
+        <img src="./sportswear.jpg" alt="לוק ספורטיבי">
+        <div class="cap">קז'ואל שיק 🤎</div>
       </div>
+    </div>
+
+    <div class="video-block">
+      <span class="funny-tag">🎬 רגע מצולם</span>
+      <h3>כשזיוי הולכת ברחוב... כולם מסתכלים 😄</h3>
+      <div class="video-wrap">
+        <video src="./zivi-walk.mp4" poster="./zivi-walk-poster.jpg" autoplay muted loop playsinline></video>
+      </div>
+      <p class="sub">מסתובבת, צוחקת, ועדיין הכי מסוגננת ברחוב 🚶‍♀️💨</p>
     </div>
   </section>
 
@@ -340,16 +494,15 @@
       <div class="swatch" style="background:#c17a5b"></div>
       <div class="swatch" style="background:#8a5a44"></div>
     </div>
-    <div class="card-grid">
+    <div class="card-grid" style="align-items:center;">
       <div class="card">
         <span class="icon">💋</span>
         <h3>לוק גלאם</h3>
         <p>איפור עשיר וזוהר, מושלם לערבים מיוחדים.</p>
       </div>
-      <div class="card">
-        <span class="icon">🌸</span>
-        <h3>לוק טבעי</h3>
-        <p>עדין ומקרין, בשביל היום-יום.</p>
+      <div class="photo-card" style="aspect-ratio:3/4; transform:rotate(-1.5deg);">
+        <img src="./makeup.jpg" alt="לוק איפור טבעי">
+        <div class="cap">לוק טבעי מקרין 🌸</div>
       </div>
       <div class="card">
         <span class="icon">🎨</span>
@@ -359,12 +512,56 @@
     </div>
   </section>
 
+  <section class="section" id="food">
+    <div class="section-head">
+      <span class="emoji-title">🍣</span>
+      <h2>אוכל אסייתי</h2>
+      <p>סושי, טופו ודגים — התזונה הרשמית והבלעדית של זיוי</p>
+    </div>
+
+    <div class="flying-food">
+      <span style="animation-duration:6s; animation-delay:0s;">🍣</span>
+      <span style="animation-duration:7.5s; animation-delay:1.2s;">🐟</span>
+      <span style="animation-duration:5.5s; animation-delay:2.4s;">🥢</span>
+      <span style="animation-duration:8s; animation-delay:0.6s;">🍱</span>
+      <span style="animation-duration:6.8s; animation-delay:3s;">🧊</span>
+      <span style="animation-duration:7s; animation-delay:1.8s;">🍤</span>
+    </div>
+
+    <div class="belt">
+      <div class="belt-track">
+        <span>🍣</span><span>🐟</span><span>🍱</span><span>🥢</span><span>🍤</span><span>🍙</span><span>🧊</span>
+        <span>🍣</span><span>🐟</span><span>🍱</span><span>🥢</span><span>🍤</span><span>🍙</span><span>🧊</span>
+      </div>
+    </div>
+
+    <p class="quote">"עוד צלחת סושי אחת... ועוד אחת... ועוד אחת" — זיוי, כל פעם 🥢😂</p>
+  </section>
+
   <section class="section" id="dogs">
     <div class="dog-hero">
       <span class="icon">🐶</span>
       <h2>כלבים</h2>
       <p>כי אין אהבה כמו אהבת כלב 🐾</p>
       <div class="paw-trail">🐾 🐾 🐾 🐾 🐾</div>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-card">
+        <img src="./dog-lap.jpg" alt="הכלב על הברכיים">
+        <div class="cap">חיבוקים על הספה 🥹</div>
+      </div>
+      <div class="photo-card">
+        <img src="./dog-couch.jpg" alt="הכלב על הספה">
+        <div class="cap">מלך הבית 👑</div>
+      </div>
+      <div class="photo-card">
+        <img src="./dog-walk.jpg" alt="הכלב מטייל בבית">
+        <div class="cap">תמיד בתנועה 🐾</div>
+      </div>
+      <div class="photo-card">
+        <img src="./dog-floor.jpg" alt="הכלב נח על הרצפה">
+        <div class="cap">מנוחה מגיעה לכולם 😴</div>
+      </div>
     </div>
     <div class="card-grid">
       <div class="card">
@@ -388,7 +585,8 @@
 </main>
 
 <footer>
-  נבנה באהבה <span class="heart">💗</span> בשביל זיוי
+  <img class="footer-photo" src="./couple.jpg" alt="זיוי ואני">
+  <div>נבנה באהבה <span class="heart">💗</span> בשביל זיוי</div>
 </footer>
 
 <script>
