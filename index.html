@@ -353,6 +353,98 @@
     margin-top:10px;
   }
 
+  /* Riddle section */
+  #riddle{
+    background:linear-gradient(135deg, var(--lavender), #f5eeff);
+    border-radius:40px;
+  }
+  .riddle-card{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--white);
+    border-radius:28px;
+    padding:40px 36px;
+    box-shadow:0 14px 34px rgba(91,75,82,.12);
+    text-align:center;
+  }
+  .riddle-clue{
+    text-align:right;
+    background:#faf6ff;
+    border-radius:18px;
+    padding:18px 22px;
+    margin-bottom:16px;
+  }
+  .riddle-num{
+    display:inline-block;
+    background:var(--lavender);
+    color:#5b3fa0;
+    font-weight:700;
+    font-size:.8rem;
+    padding:4px 14px;
+    border-radius:999px;
+    margin-bottom:8px;
+  }
+  .riddle-clue p{
+    line-height:1.7;
+    font-size:1rem;
+  }
+  .riddle-form{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:24px;
+  }
+  .riddle-form input{
+    flex:1;
+    min-width:200px;
+    padding:14px 18px;
+    border-radius:999px;
+    border:2px solid var(--lavender);
+    font-family:inherit;
+    font-size:1rem;
+    text-align:right;
+    outline:none;
+  }
+  .riddle-form input:focus{border-color:var(--pink-deep);}
+  .riddle-form button{
+    padding:14px 26px;
+    border-radius:999px;
+    border:none;
+    background:var(--pink-deep);
+    color:white;
+    font-family:inherit;
+    font-weight:600;
+    font-size:1rem;
+    cursor:pointer;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .riddle-form button:hover{background:#ff6f96; transform:translateY(-2px);}
+  .riddle-feedback{
+    margin-top:16px;
+    font-weight:600;
+    min-height:1.4em;
+    color:var(--pink-deep);
+  }
+  .riddle-reveal{
+    margin-top:24px;
+    padding:28px;
+    border-radius:22px;
+    background:linear-gradient(135deg, var(--gold), #ffe6b0);
+    display:none;
+  }
+  .riddle-reveal.show{
+    display:block;
+    animation:popIn .5s ease;
+  }
+  @keyframes popIn{
+    0%{transform:scale(.85); opacity:0;}
+    100%{transform:scale(1); opacity:1;}
+  }
+  .riddle-reveal-icon{font-size:44px; display:block; margin-bottom:10px;}
+  .riddle-reveal h3{font-size:1.4rem; margin-bottom:8px;}
+  .riddle-reveal-sub{margin-top:8px; opacity:.75; font-size:.9rem;}
+
   /* Letter section */
   #letter{
     background:linear-gradient(160deg, #2b2035, #4a3363 55%, #6b4a86);
@@ -487,6 +579,10 @@
     .letter-card .signature{font-size:1.1rem; text-align:center;}
 
     .footer-photo{width:96px; height:96px;}
+
+    .riddle-card{padding:28px 20px;}
+    .riddle-form{flex-direction:column;}
+    .riddle-form button{width:100%;}
   }
 </style>
 </head>
@@ -502,6 +598,7 @@
   <a href="#misi-shop">🛍️ העסק מיסי</a>
   <a href="#missy">🐾 מיסי הכלבה</a>
   <a href="#moments">📸 רגעים</a>
+  <a href="#riddle">🎁 חידה</a>
   <a href="#letter">💌 ברכה</a>
 </nav>
 
@@ -918,6 +1015,38 @@
     </div>
   </section>
 
+  <section class="section" id="riddle">
+    <div class="section-head">
+      <span class="emoji-title">🎁</span>
+      <h2>חידה ליום ההולדת</h2>
+      <p>שני רמזים, מתנה אחת. בואי תנחשי מה קניתי לך 😏</p>
+    </div>
+
+    <div class="riddle-card">
+      <div class="riddle-clue">
+        <span class="riddle-num">רמז 1</span>
+        <p>כל בוקר לפני שאת יוצאת אני מתמלא איתך - לפטופ, פנקס, ארנק וקפה לדרך. אני שם כדי שתמיד תיראי מסודרת ומקצועית, גם ביום הכי עמוס במשרד. מה אני?</p>
+      </div>
+      <div class="riddle-clue">
+        <span class="riddle-num">רמז 2</span>
+        <p>האולם מחשיך, המושב הכי נוח שיש, פופקורן ביד, ובלי לריב על מקום בשורה הכי טובה. מה זה?</p>
+      </div>
+
+      <div class="riddle-form">
+        <input type="text" id="riddleInput" placeholder="מה המתנה שלך?" autocomplete="off">
+        <button type="button" id="riddleBtn">לגלות אם ניחשת 🎉</button>
+      </div>
+      <p class="riddle-feedback" id="riddleFeedback"></p>
+
+      <div class="riddle-reveal" id="riddleReveal">
+        <span class="riddle-reveal-icon">🎁💼🎬</span>
+        <h3>ניחשת נכון!</h3>
+        <p>תיק יד מהמם לעבודה, ועוד כרטיס VIP לקולנוע בשבילנו 🍿</p>
+        <p class="riddle-reveal-sub">מתנה קטנה, מזל טוב ענק ❤️</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="letter">
     <div class="section-head">
       <span class="emoji-title">💌</span>
@@ -961,6 +1090,43 @@
     el.style.fontSize = (18 + Math.random()*22) + 'px';
     container.appendChild(el);
   }
+
+  const riddleBtn = document.getElementById('riddleBtn');
+  const riddleInput = document.getElementById('riddleInput');
+  const riddleFeedback = document.getElementById('riddleFeedback');
+  const riddleReveal = document.getElementById('riddleReveal');
+
+  function normalizeRiddle(str){
+    return str.trim().toLowerCase().replace(/["'׳״]/g, '').replace(/\s+/g, ' ');
+  }
+
+  const bagWords = ['תיק', 'תיק יד', 'תיק עבודה', 'תיק לעבודה', 'תיק יד לעבודה', 'תיק עבודה חדש'];
+  const cinemaWords = ['קולנוע', 'כרטיס קולנוע', 'vip', 'כרטיס vip', 'כרטיס לקולנוע', 'קולנוע vip', 'קופון קולנוע'];
+
+  function checkRiddle(){
+    const val = normalizeRiddle(riddleInput.value);
+    if(!val){
+      riddleFeedback.textContent = 'צריך לכתוב תשובה קודם 😉';
+      return;
+    }
+    const hasBag = bagWords.some(w => val.includes(w));
+    const hasCinema = cinemaWords.some(w => val.includes(w));
+    if(hasBag && hasCinema){
+      riddleFeedback.textContent = '';
+      riddleReveal.classList.add('show');
+    } else if(hasBag || hasCinema){
+      riddleFeedback.textContent = 'קרוב! יש לך רק חצי מהתשובה, נסי שוב 😉';
+      riddleReveal.classList.remove('show');
+    } else {
+      riddleFeedback.textContent = 'לא בדיוק... יש שני חלקים לתשובה, נסי שוב 🤔';
+      riddleReveal.classList.remove('show');
+    }
+  }
+
+  riddleBtn.addEventListener('click', checkRiddle);
+  riddleInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') checkRiddle();
+  });
 </script>
 
 </body>
