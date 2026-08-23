@@ -1019,17 +1019,17 @@
     <div class="section-head">
       <span class="emoji-title">🎁</span>
       <h2>חידה ליום ההולדת</h2>
-      <p>שני רמזים, מתנה אחת. בואי תנחשי מה קניתי לך 😏</p>
+      <p>שני רמזים, מתנה אחת. קצת יותר קשה הפעם, וקצת יותר שובב 😈</p>
     </div>
 
     <div class="riddle-card">
       <div class="riddle-clue">
-        <span class="riddle-num">רמז 1</span>
-        <p>כל בוקר לפני שאת יוצאת אני מתמלא איתך - לפטופ, פנקס, ארנק וקפה לדרך. אני שם כדי שתמיד תיראי מסודרת ומקצועית, גם ביום הכי עמוס במשרד. מה אני?</p>
+        <span class="riddle-num">רמז 1 🔒</span>
+        <p>לא בגד, ובכל זאת בלעדיי את לא באמת יוצאת מהבית שלמה. יש לי כתפייה אחת בלבד שאת אוהבת להחליק עליה באצבע, ובתוכי מוחבאים כל הסודות הקטנים שלך. אני משתנה איתך - פעם רשמית, פעם פרועה - אבל תמיד נשאר קרוב אלייך, לוחץ אל הגוף. מה אני?</p>
       </div>
       <div class="riddle-clue">
-        <span class="riddle-num">רמז 2</span>
-        <p>האולם מחשיך, המושב הכי נוח שיש, פופקורן ביד, ובלי לריב על מקום בשורה הכי טובה. מה זה?</p>
+        <span class="riddle-num">רמז 2 💋</span>
+        <p>חושך שיורד עלינו, קרבה שאף אחד מסביב לא שם לב אליה, ואת כל כך קרובה שאני שומע אותך נושמת. יש לנו את המושבים הכי טובים בבית, בלי מרפק זר שדוחף, ובלי מישהו שיגיד לנו להשקיט את הלחישות. מה זה?</p>
       </div>
 
       <div class="riddle-form">
@@ -1100,13 +1100,13 @@
     return str.trim().toLowerCase().replace(/["'׳״]/g, '').replace(/\s+/g, ' ');
   }
 
-  const bagWords = ['תיק', 'תיק יד', 'תיק עבודה', 'תיק לעבודה', 'תיק יד לעבודה', 'תיק עבודה חדש'];
-  const cinemaWords = ['קולנוע', 'כרטיס קולנוע', 'vip', 'כרטיס vip', 'כרטיס לקולנוע', 'קולנוע vip', 'קופון קולנוע'];
+  const bagWords = ['תיק', 'תיק יד', 'תיק עבודה', 'תיק לעבודה', 'תיק יד לעבודה', 'תיק עבודה חדש', 'תיק כתף', 'ארנק יד'];
+  const cinemaWords = ['קולנוע', 'כרטיס קולנוע', 'vip', 'כרטיס vip', 'כרטיס לקולנוע', 'קולנוע vip', 'קופון קולנוע', 'סרט', 'כרטיסי קולנוע', 'בית קולנוע', 'כרטיס לסרט', 'מושבי vip', 'זוגי vip'];
 
   function checkRiddle(){
     const val = normalizeRiddle(riddleInput.value);
     if(!val){
-      riddleFeedback.textContent = 'צריך לכתוב תשובה קודם 😉';
+      riddleFeedback.textContent = 'קדימה מותק, לפחות תנסי לפני שאת מוותרת 😏';
       return;
     }
     const hasBag = bagWords.some(w => val.includes(w));
@@ -1115,10 +1115,10 @@
       riddleFeedback.textContent = '';
       riddleReveal.classList.add('show');
     } else if(hasBag || hasCinema){
-      riddleFeedback.textContent = 'קרוב! יש לך רק חצי מהתשובה, נסי שוב 😉';
+      riddleFeedback.textContent = 'מממ, את מתחממת... אבל זה עדיין רק חצי ממה שמחכה לך 🔥';
       riddleReveal.classList.remove('show');
     } else {
-      riddleFeedback.textContent = 'לא בדיוק... יש שני חלקים לתשובה, נסי שוב 🤔';
+      riddleFeedback.textContent = 'לא ולא, תחשבי יותר לעומק... יש שני חלקים לתשובה 😉';
       riddleReveal.classList.remove('show');
     }
   }
