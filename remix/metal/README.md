@@ -10,7 +10,7 @@
 | `Mushe_Metal_Version.mp3` / `.wav` | הגרסה הראשית |
 | `Mushe_Metal_Version_Instrumental.mp3` / `.wav` | הביט בלבד, בלי הקול |
 | `cover_metal.jpg` | עטיפה (1400×1400) |
-| `production/` | כל הקוד שבנה את הגרסה (ניתן להריץ ולשנות) |
+| `../production/metal/` | כל הקוד שבנה את הגרסה (המודולים, העיבוד `riffs.json`, המיקס) |
 
 ## הקונספט
 
@@ -39,9 +39,11 @@
 ## הרצה מחדש
 
 ```
-cd production
+cd remix/production
 pip install numpy scipy soundfile mido
 apt-get install ffmpeg fluidsynth fluid-soundfont-gm rubberband-cli
-python3 metal_song.py main          # או: instrumental
+python3 vocal.py                    # מנקה את ההקלטה וחותך למילים (vox/)
+cd metal
+python3 metal_song.py main          # או: instrumental  (כ-4 דקות)
 python3 export_metal.py <תיקיית יעד>
 ```
