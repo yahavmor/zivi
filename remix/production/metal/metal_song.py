@@ -218,7 +218,7 @@ for _ in range(4):
     if abs(err) <= 0.15: break
     g0 += err
 m = m2; print("master gain %.2f dB" % g0)
-a = np.abs(m).max(1); idx = np.where(a > 1e-4)[0]; m = m[:min(len(m), idx[-1] + int(0.8 * SR))]
+a = np.abs(m).max(1); idx = np.where(a > 1e-3)[0]; m = m[:min(len(m), idx[-1] + SR)]; m[-int(0.2 * SR):] *= np.linspace(1, 0, int(0.2 * SR))[:, None]
 name = {'main': 'mushe_metal', 'instrumental': 'mushe_metal_instrumental'}[MODE]
 E.write(os.path.join(OUT, name + '_48k.wav'), m)
 print("pre-master:", meas, "| final:", E.measure(os.path.join(OUT, name + '_48k.wav')), "| len %.1fs" % (len(m) / SR))
